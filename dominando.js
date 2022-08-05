@@ -1,60 +1,67 @@
 function TTTChecker(array) {
-
-    function TresCasasSaoIguais(threeArray) {
-        return (threeArray[0] == threeArray[1] && threeArray[1] == threeArray[2])
+    let estaOcupadoPor =
+     {
+        vazio : 0,
+        bolinha : 2,
+        xizinho : 1,
+    }
+    let tipoDoResultadoEh =
+    {
+        naoAcabado : -1,
+        xizinhoWins : 1,
+        bolinhaWins : 2,
+        empatou : 0
+    }
+    
+    function TresCasasSaoIguais(arrayDeTresPosicoes) {
+        return (arrayDeTresPosicoes[0] == arrayDeTresPosicoes[1] && arrayDeTresPosicoes[1] == arrayDeTresPosicoes[2])
     }
 
-    function ArrayChecker(threeArray) {
-        if (TresCasasSaoIguais(threeArray)) {
-            if (threeArray[0] == 1) {
-                return 1
+    function ArrayChecker(arrayDeTresPosicoes) {
+        if (TresCasasSaoIguais(arrayDeTresPosicoes)) {
+            let elementoQueEhIgual = arrayDeTresPosicoes[0]
+
+            if (elementoQueEhIgual == estaOcupadoPor.xizinho) {
+                return tipoDoResultadoEh.xizinhoWins
             }
-            if (threeArray[0] == 2) {
-                return 2
+            if (elementoQueEhIgual == estaOcupadoPor.bolinha) {
+                return tipoDoResultadoEh.bolinhaWins
             }
-            if (threeArray[0] == 0) {
-                return -1
+            if (elementoQueEhIgual == estaOcupadoPor.vazio) {
+                return tipoDoResultadoEh.naoAcabado
             }
         }
         else {
-            return 0
+            return tipoDoResultadoEh.empatou
         }
     }
 
     function RowsChecker(array) {
         for (let currentRow = 0; currentRow < 3; currentRow++) {
-            
-            if (ArrayChecker(array[currentRow]) == 1 ){
-                return 1
-            }
-            if (ArrayChecker(array[currentRow]) == 2 ){
-                return 2
-            }
-            if (ArrayChecker(array[currentRow]) == -1 ){
-                return -1
-            }
+
+            let estadoAtual = ArrayChecker(array[currentRow])
+            if (estadoAtual == 1 || estadoAtual == 2 || estadoAtual == -1)
+                return estadoAtual
+
         }
-        
-            return 0
-        
-        
+        return 0
     }
 
-    function ColumnsChecker(array){
-        for (let currentCol = 0; currentCol < 3; currentCol ++){
+    function ColumnsChecker(array) {
+        for (let currentCol = 0; currentCol < 3; currentCol++) {
 
         }
     }
-
-    return RowsChecker(array)
+return RowsChecker(array[0])
+    
 
 };
 
 
 let arrayTeste =
-[[1, 0, 1],
- [2, 2, 2],
- [2, 0, 1]]
+    [[1, 0, 1],
+    [2, 2, 2],
+    [2, 0, 1]]
 
 console.log(TTTChecker(arrayTeste))
                  /*
