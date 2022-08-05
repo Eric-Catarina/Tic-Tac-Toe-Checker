@@ -1,3 +1,7 @@
+const transpose = (matrix) => {
+    let [row] = matrix
+    return row.map((value, column) => matrix.map(row => row[column]))
+  }
 function TTTChecker(array) {
     let estaOcupadoPor =
      {
@@ -49,21 +53,17 @@ function TTTChecker(array) {
         return 0
     }
 
-    function ColumnsChecker(array) {
-        for (let currentCol = 0; currentCol < 3; currentCol++) {
-
-        }
-    }
-
-return RowsChecker(array)
+  let resultadoLinhas = RowsChecker(array)
+  let resultadoColunas = RowsChecker(transpose(array))
+return resultadoColunas
     
 };
 
 
 let arrayTeste =
-   [[1, 2, 1],
-    [2, 1, 2],
-    [2, 1, 1]]
+   [[1, 1, 1],
+    [2, 0, 2],
+    [2, 0, 1]]
 
 console.log(TTTChecker(arrayTeste))
                  /*
