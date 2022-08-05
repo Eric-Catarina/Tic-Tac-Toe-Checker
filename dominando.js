@@ -18,6 +18,7 @@ function TTTChecker(array) {
     }
 
     function ArrayChecker(arrayDeTresPosicoes) {
+        let temZero = arrayDeTresPosicoes.includes(0)
         if (TresCasasSaoIguais(arrayDeTresPosicoes)) {
             let elementoQueEhIgual = arrayDeTresPosicoes[0]
 
@@ -27,7 +28,7 @@ function TTTChecker(array) {
             if (elementoQueEhIgual == estaOcupadoPor.bolinha) {
                 return tipoDoResultadoEh.bolinhaWins
             }
-            if (elementoQueEhIgual == estaOcupadoPor.vazio) {
+            if (temZero){
                 return tipoDoResultadoEh.naoAcabado
             }
         }
@@ -59,7 +60,7 @@ return RowsChecker(array[0])
 
 
 let arrayTeste =
-    [[1, 0, 1],
+   [[1, 0, 1],
     [2, 2, 2],
     [2, 0, 1]]
 
