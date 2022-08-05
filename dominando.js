@@ -18,7 +18,7 @@ function TTTChecker(array) {
     }
 
     function ArrayChecker(arrayDeTresPosicoes) {
-        let temZero = arrayDeTresPosicoes.includes(0)
+        
         if (TresCasasSaoIguais(arrayDeTresPosicoes)) {
             let elementoQueEhIgual = arrayDeTresPosicoes[0]
 
@@ -28,9 +28,10 @@ function TTTChecker(array) {
             if (elementoQueEhIgual == estaOcupadoPor.bolinha) {
                 return tipoDoResultadoEh.bolinhaWins
             }
-            if (temZero){
-                return tipoDoResultadoEh.naoAcabado
-            }
+          
+        }
+        if (arrayDeTresPosicoes.includes(0)){
+            return tipoDoResultadoEh.naoAcabado
         }
         else {
             return tipoDoResultadoEh.empatou
@@ -53,16 +54,16 @@ function TTTChecker(array) {
 
         }
     }
-return RowsChecker(array[0])
-    
 
+return RowsChecker(array)
+    
 };
 
 
 let arrayTeste =
-   [[1, 0, 1],
-    [2, 2, 2],
-    [2, 0, 1]]
+   [[1, 2, 1],
+    [2, 1, 2],
+    [2, 1, 1]]
 
 console.log(TTTChecker(arrayTeste))
                  /*
